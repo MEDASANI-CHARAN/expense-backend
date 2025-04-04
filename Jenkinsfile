@@ -13,6 +13,7 @@ pipeline {
             steps {
                 sh '''
                     echo "this is testng"
+                    ls -ltr
                 '''
             }
         } 
@@ -25,7 +26,7 @@ pipeline {
                 deleteDir()
             }
             success { 
-                echo 'I will when when pipeline sucess'
+                echo 'I will win when pipeline sucess'
             }
         }
     }
