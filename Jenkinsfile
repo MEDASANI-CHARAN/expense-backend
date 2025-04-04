@@ -8,83 +8,15 @@ pipeline {
                 disableConcurrentBuilds() 
                  ansiColor('xterm')
             }
-    parameters {
-        choice(name: 'action', choices: ['Apply', 'Destroy'], description: 'Pick something')
-    }
     stages {
-        stage('Init') {
+        stage('test') {
             steps {
                 sh '''
-                    ls -ltr
-                    cd 01-vpc
-                    terraform init -reconfigure
+                    echo "this is testng"
                 '''
             }
         } 
-        stage('Plan') {
-            when {
-                expression{
-                    params.action == 'Apply'
-                }
-            }
-            steps {
-                sh '''
-                    ls -ltr
-                    cd 01-vpc
-                    terraform plan
-                '''
-            }
-        }
-        stage('Deploy') {
-            when {
-                expression{
-                    params.action == 'Apply'
-                }
-            }
-            input {
-                message "Should we continue?"
-                ok "Yes, we should."              
-            }
-            steps {
-                sh '''
-                    ls -ltr
-                    cd 01-vpc
-                    terraform apply -auto-approve
-                '''
-            }
-        }
-
-        stage('Destroy') {
-            when {
-                expression{
-                    params.action == 'Destroy'
-                }
-            }
-            steps {
-                sh '''
-                    ls -ltr
-                    cd 01-vpc
-                    terraform destroy -auto-approve
-                '''
-            }
-        }
-
-        stage('print params') {
-            steps {
-                echo "Hello ${params.PERSON}"
-
-                echo "Biography: ${params.BIOGRAPHY}"
-
-                echo "Toggle: ${params.TOGGLE}"
-
-                echo "Choice: ${params.CHOICE}"
-
-                echo "Password: ${params.PASSWORD}"
-
-                echo "triggred again"
-            } 
-        }
-    }
+        
     post { 
             always { 
                 echo 'I will always say Hello again!'
