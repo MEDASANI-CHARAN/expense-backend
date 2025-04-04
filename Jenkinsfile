@@ -9,12 +9,19 @@ pipeline {
                  ansiColor('xterm')
             }
     stages {
+        state('read the version') {
+            steps {
+                def packageJson = readJSON file: 'package.json'
+                def appVersion = packageJson.version
+            }
+        }
         stage('Install Dependencies') {
             steps {
-                sh '''
+                sh """
                     npm install
                     ls -ltr
-                '''
+                    echo $appVersion
+                """
             }
         } 
 
@@ -26,7 +33,7 @@ pipeline {
                 deleteDir()
             }
             success { 
-                echo 'I will win when pipeline sucess'
+                echo 'I will un when pipeline sucess'
             }
         }
     }
