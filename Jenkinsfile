@@ -9,7 +9,7 @@ pipeline {
                  ansiColor('xterm')
             }
     stages {
-        state('read the version') {
+        stage('read the version') {
             steps {
                 def packageJson = readJSON file: 'package.json'
                 def appVersion = packageJson.version
