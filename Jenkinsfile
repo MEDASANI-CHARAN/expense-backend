@@ -32,12 +32,21 @@ pipeline {
             }
         } 
 
+        stage('Build') {
+            steps {
+                sh """
+                   zip -r backend-${appVersion}.zip * -x Jenkinsfile -x backend-${appVersion}.zip
+                   ls -ltr
+                """
+            }
+        } 
+
     }
         
     post { 
             always { 
                 echo 'I will always say Hello again!'
-                //deleteDir()
+                deleteDir()
             }
             success { 
                 echo 'I will un when pipeline sucess'
