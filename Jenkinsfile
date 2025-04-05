@@ -10,7 +10,7 @@ pipeline {
             }
     environment {
         def appVersion = '' //variable declaration
-        nexusUrl: 'jenkins-nexus.daws78s.xyz:8081'
+        nexusUrl = 'jenkins-nexus.daws78s.xyz:8081'
     }
     stages {
         stage('read the version') {
