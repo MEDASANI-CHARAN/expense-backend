@@ -51,13 +51,13 @@ pipeline {
                     //nexusUrl: 'jenkins-nexus.daws78s.xyz:8081',
                     nexusUrl: "${nexusUrl}"
                     groupId: 'com.expense',
-                    version: "${$appVersion}",
+                    version: "${appVersion}",
                     repository: 'backend',
                     credentialsId: 'nexusauth',
                     artifacts: [
                         [artifactId: 'backend',
                         classifier: '',
-                        file: 'backend-' + "${$appVersion}" + '.zip',
+                        file: 'backend-' + "${appVersion}" + '.zip',
                         type: 'zip']
                      ]
                    )
