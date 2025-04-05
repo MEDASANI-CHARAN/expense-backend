@@ -59,8 +59,8 @@ pipeline {
                         classifier: '',
                         file: 'backend-' + "${$appVersion}" + '.zip',
                         type: 'zip']
-        ]
-     )
+                     ]
+                   )
                }
             }
         } 
