@@ -67,15 +67,16 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                def params = [
+                script{
+                    def params = [
                     string(name: 'appVersion', value: "${appVersion}")
                 ]
-                script {
                     build job: 'backend-deployment', parameters: params, wait: false
+                }
               }
             }
         }
-    }
+    
         
     post { 
             always { 
@@ -87,3 +88,4 @@ pipeline {
             }
         }
     }
+
