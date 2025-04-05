@@ -49,7 +49,7 @@ pipeline {
                     nexusVersion: 'nexus3',
                     protocol: 'http',
                     //nexusUrl: 'jenkins-nexus.daws78s.xyz:8081',
-                    nexusUrl: "${nexusUrl}"
+                    nexusUrl: "${nexusUrl}",
                     groupId: 'com.expense',
                     version: "${appVersion}",
                     repository: "backend",
