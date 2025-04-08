@@ -6,6 +6,7 @@ pipeline {
                 // timeout(time: 100, unit: 'SECONDS')
                 timeout(time: 5, unit: 'MINUTES')
                 disableConcurrentBuilds() 
+                ansiColor('xterm')
             }
     environment {
         def appVersion = '' //variable declaration
@@ -24,13 +25,11 @@ pipeline {
         }
         stage('Install Dependencies') {
             steps {
-                ansiColor('xterm'){
                 sh """
                     npm install
                     ls -ltr
                     echo $appVersion
                 """
-                }
             }
         } 
 
