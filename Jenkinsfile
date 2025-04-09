@@ -8,7 +8,10 @@ pipeline {
                 disableConcurrentBuilds() 
                 ansiColor('xterm')
             }
-    environment {
+    parameters {
+
+    }
+    environment {booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
         def appVersion = '' //variable declaration
         nexusUrl = 'jenkins-nexus.daws78s.xyz:8081'
     }
@@ -79,6 +82,11 @@ pipeline {
         } 
 
         stage('Deploy') {
+            when {
+                expression {
+                    params.deploy
+                }
+            }
             steps {
                 script{
                     def params = [
