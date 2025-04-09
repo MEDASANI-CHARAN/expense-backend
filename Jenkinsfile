@@ -9,9 +9,9 @@ pipeline {
                 ansiColor('xterm')
             }
     parameters {
-
+            booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
     }
-    environment {booleanParam(name: 'Deploy', defaultValue: false, description: 'Toggle this value')
+    environment {
         def appVersion = '' //variable declaration
         nexusUrl = 'jenkins-nexus.daws78s.xyz:8081'
     }
