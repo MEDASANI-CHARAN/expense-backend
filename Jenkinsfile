@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label 'agent-2'
+        label 'agent-3'
     }
     options {
                 // timeout(time: 100, unit: 'SECONDS')
